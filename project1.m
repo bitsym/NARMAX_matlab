@@ -6,28 +6,7 @@ addpath('narmaxutils');
 %% read data
 m = readtable('sample.csv','ReadVariableNames',true,'Delimiter',',');
 
-% % or,
-% opts = detectImportOptions('sample.csv');
-% opts.Delimiter = ',';
-% preview('sample.csv',opts);
-% m = readtable('sample.csv',opts);
-% % but this doesn't work because the auto detect seems to detect it as 
-% % 3 variables instead of 2, even after I set the delimiters
-
-% % or,
-% opts = delimitedTextImportOptions('NumVariables',2,'Delimiter',',','VariableNamesLines',1);
-% % unfortunately, this only for version after 2018b
-
-% % convert text to datetime
-% m.time = datetime(m.TIMESTAMP,'InputFormat','yyyy/MM/dd HH:mm');
-
-% % convert datetime to serial date number
-% m.num = datenum(m.time);
-
-% % use datestr(...) to reverse serial date number
-
 % % convert text to serial date number directly
-% % notice that the input format is different from datetime() !!!
 % % subtract a "preset" number from all entries
 preset = datenum(m.TIMESTAMP(1),'yyyy/mm/dd HH:MM');
 m.time = datenum(m.TIMESTAMP,'yyyy/mm/dd HH:MM') - preset + 1;
