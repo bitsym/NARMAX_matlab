@@ -39,11 +39,11 @@ u = ones(N,1);
 nmodel = narmax(y, u);
 
 %% Configure and invoke frols algorithm passing NARMAX model
-ny = 3;
-nu = 1;
-ne = 3;
-nl = 3;
-nterms = [6 3];
+ny = 2;
+nu = 0;
+ne = 2;
+nl = 2;
+nterms = [4 1];
 iter = 500;
 
 [nmodel, estInds, results, theta] = frols(nmodel, [ny nu ne nl], nterms, iter);
